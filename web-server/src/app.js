@@ -1,16 +1,10 @@
-import express from "express";
+const express = require("express");
+const path = require("path");
 
 const app = express();
+const publicDirectoryPath = path.join(__dirname, "../public");
 
-app.get("/", (req, res) => {
-  res.send(
-    "<h1>backend development will make me well known and very wealthy! so help me God, Amenn!!!</h1>"
-  );
-});
-
-app.get("/help", (req, res) => {
-  res.send("Help page");
-});
+app.use(express.static(publicDirectoryPath));
 
 app.get("*", (req, res) => {
   res.send("wrong page route, please check and try again");
